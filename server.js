@@ -912,6 +912,10 @@ app.post("/api/reviews", auth, async (req, res) => {
 // Serve frontend
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 // Generic error handler
 app.use((error, _req, res, _next) => {
   console.error(error);
