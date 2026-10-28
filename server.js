@@ -233,7 +233,6 @@ req.session.save((err) => {
 
 // Logout
 app.post("/api/auth/logout", (req, res) => {
-app.post("/api/auth/logout", (req, res) => {
   req.session.destroy(error => {
     if (error) {
       return res.status(500).json({ error: "Logout failed." });
