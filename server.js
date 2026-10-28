@@ -216,7 +216,7 @@ if (!passwordMatches) {
   });
 }
 
-  rreq.session.userId = String(user._id);
+  req.session.userId = String(user._id);
 req.session.role = user.role;
 
 req.session.save((err) => {
@@ -228,8 +228,11 @@ req.session.save((err) => {
   }
 
   res.json({ user: meSafe(user) });
+  });
 });
+
 // Logout
+app.post("/api/auth/logout", (req, res) => {
 app.post("/api/auth/logout", (req, res) => {
   req.session.destroy(error => {
     if (error) {
