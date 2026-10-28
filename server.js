@@ -215,12 +215,19 @@ if (!passwordMatches) {
   });
 }
 
-  req.session.userId = String(user._id);
-  req.session.role = user.role;
+  rreq.session.userId = String(user._id);
+req.session.role = user.role;
+
+req.session.save((err) => {
+  if (err) {
+    console.error("Session save failed:", err.message);
+    return res.status(500).json({
+      error: "Unable to save login session."
+    });
+  }
 
   res.json({ user: meSafe(user) });
 });
-
 // Logout
 app.post("/api/auth/logout", (req, res) => {
   req.session.destroy(error => {
