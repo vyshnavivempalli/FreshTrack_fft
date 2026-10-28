@@ -11,6 +11,7 @@ const fs = require("fs");
 const crypto = require("crypto");
 
 const app = express();
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 3000;
 const client = new MongoClient(process.env.MONGODB_URI);
 const DB = process.env.MONGODB_DATABASE || "FreshTrack";
